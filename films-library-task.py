@@ -44,8 +44,8 @@ for i in range(0, len(movies_list)):
         get_movies.append(movies_list[i])
     else: get_series.append(movies_list[i])
 
-get_movies = sorted(get_movies, key=lambda j: j.title)
-get_series = sorted(get_series, key=lambda k: k.title)
+get_movies = sorted(get_movies, key=lambda j: j[0])
+get_series = sorted(get_series, key=lambda k: k[0])
 print(get_movies)
 print(get_series)
 
