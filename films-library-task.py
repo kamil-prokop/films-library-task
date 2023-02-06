@@ -88,3 +88,32 @@ def search(some_title):
     except UnboundLocalError:
         print("Film '" + title_of_movie + "' nie znajduje się w Bibliotece filmów")
 search(title_of_movie)
+
+import random
+random_movie = 0
+random_additional_views = 0
+print("")
+print("Po zliczeniu odtworzeń filmów:")
+def generate_views():
+    random_movie = random.randint(0, len(list_of_movies) - 1)
+    random_additional_views = random.randint(0, 100)
+    list_of_movies[random_movie].views += random_additional_views
+    print(list_of_movies[random_movie], "liczba odsłon: ", list_of_movies[random_movie].views, ", z czego dodano: ", random_additional_views)
+generate_views()
+
+def generate_views_multi():
+    for i in range(1, 10):
+        generate_views()
+generate_views_multi()
+
+popular_movies_sorted = []
+from datetime import datetime
+
+def top_titles():
+    print(" ")
+    popular_movies = int(input("Ile najpopularniejszych tytułów z Biblioteki filmów podać? "))
+    popular_movies_sorted = sorted(list_of_movies, key=lambda j: j.views, reverse=True)
+    print("Najpopularniejsze filmy i seriale dnia ", datetime.today().strftime('%d.%m.%Y.'), " to: ")
+    for i in range(0, popular_movies):
+        print(popular_movies_sorted[i], "ilość wyświetleń: ", popular_movies_sorted[i].views)
+top_titles()
